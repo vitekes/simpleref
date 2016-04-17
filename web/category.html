@@ -1,0 +1,42 @@
+<!-- Blog Entries Column -->
+
+<h1 class="page-header">
+    Категория: {{page}}
+</h1>
+
+<!-- Blog Post -->
+{% for entry in entries %}
+<h2>
+    <a href="#">{{entry.name}}</a>
+</h2>
+<p class="lead">
+    by <a href="/{{entry.download_link}}">Скачать</a>
+</p>
+<hr>
+<p>{{entry.name}}</p>
+<a class="btn btn-primary" href="/{{entry.url}}">Читать далее <span class="glyphicon glyphicon-chevron-right"></span></a>
+<hr>
+{% end %}
+
+<!-- Pager -->
+<ul class="pager">
+    {% if page == 1  %}
+    <li class="previous">
+        <a href="/1">1"&larr; Назад</a>
+    </li>
+    {% elif page > 1 %}
+    <li class="previous">
+        <a href="/{{page - 1}}">{{page - 1}}"&larr; Назад</a>
+    </li>
+    {% end %}
+
+    {% if page == last %}
+    <li class="next">
+        <a href="/{{last}}">{{last}}">Вперед &rarr;</a>
+    </li>
+    {% elif page < last %}
+    <li class="next">
+        <a href="/{{page + 1}}">{{page + 1}}"Вперед &rarr;</a>
+    </li>
+    {% end %}
+</ul>
